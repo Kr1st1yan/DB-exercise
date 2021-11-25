@@ -26,19 +26,18 @@ from product
 WHERE type = 'PC')
 
 ------------
-
-SELECT  p1.hd
+--inc
+SELECT DISTINCT p1.hd
 from pc as p1
 JOIN pc as p2
 on (p1.model != p2.model and p1.hd = p2.hd)
 
 -------------
 
-SELECT DISTINCT p1.model, p2.model
+SELECT DISTINCT  p1.model AS FIRSTMODEL, p2.model AS SECONDMODEL
 from pc as p1
 JOIN pc as p2
-on p1.ram = p2.ram AND P1.speed = p2.speed AND p1.model != p2.model
-GROUP BY p1.model, p2.model
+on p1.ram = p2.ram AND P1.speed = p2.speed AND p1.model != p2.model AND p1.code < p2.code
 
 --------------
 --incorrect
