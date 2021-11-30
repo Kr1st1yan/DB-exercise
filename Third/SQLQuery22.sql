@@ -22,10 +22,15 @@ ORDER BY speed
 )
 
 -------------
---NOT WORKING
-select product.model
-from product
 
+SELECT top 1 model, price
+FROM ((SELECT model, price FROM PC)
+      UNION ALL
+      (SELECT model, price FROM Laptop)
+      UNION ALL
+      (SELECT model, price FROM printer)
+     ) p
+ORDER BY price desc
 
 ------------
 
