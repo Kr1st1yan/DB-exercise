@@ -5,17 +5,14 @@ product.model NOT IN (SELECT model from pc) and
 product.model NOT IN (select model from printer)
 
 ------------
---inc
-SELECT DISTINCT MAKER
-FROM PRODUCT, laptop, printer 
-WHERE product.model in (SELECT model from laptop)AND
-product.model IN(SELECT model from printer)
+select distinct p1.maker
+from product as p1, product as p2
+where p1.maker = p2.maker and p1.type = 'Laptop' and p2.type = 'Printer'
 
 ------------
---inc
 SELECT DISTINCT l1.hd
 from laptop as l1, laptop as l2
-where l1.model = l2.model and l1.hd = l2.hd
+where l1.model != l2.model and l1.hd = l2.hd
 
 -----------
 SELECT distinct product.model
