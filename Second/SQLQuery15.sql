@@ -40,11 +40,10 @@ on p1.ram = p2.ram AND P1.speed = p2.speed AND p1.model != p2.model
 GROUP BY p1.model, p2.model
 
 --------------
---incorrect
-SELECT DISTINCT p1.maker
-from product as p1
-JOIN pc as p2
-on p1.model = p2.model
-where p2.speed >= 400 
+select  maker
+from product, pc
+where type = 'PC' and product.model = pc.model and pc.speed >= 400 
+group by maker
+having count(maker) > 1
 
 
